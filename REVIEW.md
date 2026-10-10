@@ -1,4 +1,4 @@
-# Ստուգեք Quietbox-ի կոդը / Review Quietbox
+# Ստուգեք info-ի կոդը / Review info
 
 Հանրային կոդը՝ [github.com/arkoc/quietbox](https://github.com/arkoc/quietbox)։
 

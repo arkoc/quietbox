@@ -3,7 +3,7 @@ import { boundedJson, checkProof, messageText, requireSecret, sameOrigin, saveSu
 export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   try {
-    if (!sameOrigin(request)) throw new SubmissionError(403, "Հաղորդագրությունն ուղարկեք Quietbox-ի ձևի միջոցով։");
+    if (!sameOrigin(request)) throw new SubmissionError(403, "Հաղորդագրությունն ուղարկեք info-ի ձևի միջոցով։");
     if (!env.DB) throw new SubmissionError(503, "Արկղը ժամանակավորապես անհասանելի է։");
     const data = await boundedJson(request);
     const body = messageText(data);

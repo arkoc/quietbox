@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Quietbox — Ուղարկել տեղեկություն",
+  title: "info",
   description: "Կիսվեք տեղեկություններով՝ առանց ձեր անունը կամ կապի տվյալները նշելու։",
   robots: { index: false, follow: false },
   icons: {
