@@ -10,7 +10,7 @@ The application inbox stores only a random message ID, message text, UTC calenda
 
 This is **not a guarantee of untraceability**. The hosting/network provider receives the connection and may process IP addresses and account/session data independently of this application. Its logging, backups and access controls require separate assessment. A recipient who controls the hosting or changes the deployed source could change these protections. Published source is inspectable; it does not prove a deployment is identical or a provider keeps no logs. Text itself may identify its author. No claim of an independent security audit is made.
 
-The intended deployment has a publicly accessible submission page and a recipient-only inbox. A private Sites preview requires a site-level sign-in until the owner chooses public access. Application sign-in is needed only for the inbox.
+The hosted submission page is public and does not require a sender account. The separate inbox still requires the recipient's sign-in. Site audience settings and gateway behavior are deployment configuration: verify them on the live site instead of inferring access from this repository. A separately hosted private preview may require site-level sign-in.
 
 ## Data and spam protection
 

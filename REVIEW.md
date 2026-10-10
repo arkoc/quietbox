@@ -36,7 +36,7 @@ Check at least these limits:
 
 - The browser's connection reaches a hosting/network provider that may see its IP and existing session data. Application header removal occurs after that boundary.
 - The operator can change deployed code or infrastructure. A public repository, downloadable source, hashes and an AI review do not attest what is running or prove the absence of host logs/backups.
-- The current Site remains owner-private; its access gate requires sign-in until the owner changes audience. Anonymous visitor access cannot be established from this repository alone.
+- The hosted submission page is public; the inbox still requires the recipient's sign-in. Audience settings and gateway behavior must be verified on the live deployment. Anonymous visitor access cannot be established from this repository alone.
 - The inbox depends on identity headers injected by a trusted gateway. A generic Worker route accepting spoofed public headers would not be safe. Local preview uses mock authentication.
 - Proof-of-work discourages spam but does not prove a human sender. Shared quotas can be exhausted by others.
 - Message content can identify its author; the recipient can retain or copy text independently of application retention.
