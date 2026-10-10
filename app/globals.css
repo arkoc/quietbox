@@ -30,6 +30,9 @@ html[lang="hy"] .reader-top{flex-wrap:wrap}
 .dropbox-page{max-width:620px;margin:38px auto 48px}
 .dropbox-page .form-card{padding:26px}
 html[lang="hy"] .dropbox-page .message-label{font-family:inherit;font-size:18px;font-weight:600;line-height:1.5;letter-spacing:0;margin:0}
+.anonymity-note{font-size:12px;line-height:1.8;color:var(--ink);margin-top:10px}
+.anonymity-note span{display:block;color:var(--muted);margin-top:4px}
+.anonymity-note a{text-decoration:underline;text-underline-offset:3px}
 .dropbox-page .textarea-wrap{margin-top:16px}
 .dropbox-page textarea{min-height:220px}
 .dropbox-page .verification{background:transparent;border:0;padding:0;margin:18px 0}
