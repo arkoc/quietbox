@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {solveChallenge} from 'altcha-lib';
+import {deriveKey} from 'altcha-lib/algorithms/pbkdf2';
+const root='http://127.0.0.1:5188';
+const request=(path,options={})=>fetch(root+path,options);
+const anon=await request('/api/inbox');assert.equal(anon.status,403);
+const spoof=await request('/api/inbox',{headers:{'oai-authenticated-user-id':'local_seedy','oai-authenticated-user-email':'seedy@sites.test'}});assert.equal(spoof.status,403);
+const challengeResponse=await request('/api/challenge');assert.equal(challengeResponse.status,200);
+const challenge=await challengeResponse.json();const solution=await solveChallenge({challenge,deriveKey});assert(solution);
+const body=JSON.stringify({message:'Quietbox delivery test. <script>This remains plain text.</script>',website:'',proof:btoa(JSON.stringify({challenge,solution}))});
+const headers={'content-type':'application/json',origin:root,'cf-connecting-ip':'192.0.2.123','x-forwarded-for':'192.0.2.123','user-agent':'quietbox-test'};
+const foreign=await request('/api/messages',{method:'POST',headers:{...headers,origin:'https://foreign.test'},body});assert.equal(foreign.status,403);
+const sent=await request('/api/messages',{method:'POST',headers,body});assert.equal(sent.status,201,await sent.text());
+const replay=await request('/api/messages',{method:'POST',headers,body});assert.equal(replay.status,409,await replay.text());
+const signIn=await request('/signin-with-chatgpt?return_to=/inbox',{redirect:'manual'});const cookie=signIn.headers.get('set-cookie')?.split(';')[0];assert(cookie);
+const inbox=await request('/api/inbox',{headers:{cookie}});assert.equal(inbox.status,200);const data=await inbox.json();const row=data.messages.find(m=>m.body===JSON.parse(body).message);assert(row);assert.deepEqual(Object.keys(row).sort(),['id','body','day','is_read'].sort());
+const marked=await request('/api/inbox',{method:'POST',headers:{'content-type':'application/json',origin:root,cookie},body:JSON.stringify({action:'read',id:row.id})});assert.equal(marked.status,200);
+console.log(JSON.stringify({anonymousInbox:anon.status,spoofedIdentity:spoof.status,crossOrigin:foreign.status,delivery:sent.status,replay:replay.status,recipientInbox:inbox.status,markRead:marked.status,storedFields:Object.keys(row)}));
