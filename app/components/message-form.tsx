@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { ArrowRight, Check, RotateCcw, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, RotateCcw } from "lucide-react";
 function SpamCheck({ version, onState }: {version: number; onState: (state: string, payload?: string) => void}) {
   const host = useRef<HTMLDivElement>(null), callback = useRef(onState);
   callback.current = onState;
@@ -45,15 +45,15 @@ export default function MessageForm() {
       setProof(""); setCheckState("unverified"); setVersion(v => v + 1);
     } finally { setSending(false); }
   }
-  if (sent) return <div className="form-card success-card"><div className="success-icon"><Check size={33}/></div><h2 ref={resultHeading} tabIndex={-1}>Հաղորդագրությունն ուղարկված է։</h2><p>Շնորհակալություն։ Պատասխան չի ուղարկվում, և զրույց չի բացվում։ Կարող եք փակել էջը։</p></div>;
+  if (sent) return <div className="form-card success-card"><div className="success-icon" aria-hidden="true"><Check size={28}/></div><h1 ref={resultHeading} tabIndex={-1}>Ուղարկված է։</h1></div>;
   return <form className="form-card" onSubmit={submit} autoComplete="off">
-    <label htmlFor="message" className="message-label">Ձեր հաղորդագրությունը</label><p className="field-description" id="message-help">Մի նշեք ձեր անունը կամ ձեզ նույնականացնող այլ տվյալներ։</p>
-    <div className="textarea-wrap"><textarea id="message" name="message" aria-describedby="message-help message-count" placeholder="Գրեք այստեղ…" maxLength={8000} value={message} onChange={e => setMessage(e.target.value)} required disabled={sending} spellCheck={false}/><span id="message-count" className="counter">{message.length.toLocaleString("hy-AM")} / 8 000</span></div>
+    <h1 className="message-label"><label htmlFor="message">Հաղորդագրություն</label></h1>
+    <div className="textarea-wrap"><textarea id="message" name="message" aria-describedby="message-count" placeholder="Գրեք այստեղ…" maxLength={8000} value={message} onChange={e => setMessage(e.target.value)} required disabled={sending} spellCheck={false}/><span id="message-count" className="counter">{message.length.toLocaleString("hy-AM")} / 8 000</span></div>
     <div className="honeypot" aria-hidden="true"><label>Այս դաշտը թողեք դատարկ<input name="website" type="text" tabIndex={-1} autoComplete="off"/></label></div>
-    <div className="verification"><div className="verification-heading"><ShieldCheck size={16}/><span>Կարճ ստուգում՝ սպամը կանխելու համար</span></div><SpamCheck version={version} onState={(state, payload) => {setCheckState(state); setProof(state === "verified" ? payload || "" : "");}}/>
-      {checkState === "loading" && <p className="check-hint" role="status">Սպամից պաշտպանությունը բեռնվում է…</p>}{["error", "expired"].includes(checkState) && <button type="button" className="retry" onClick={() => setVersion(v => v+1)}><RotateCcw size={13}/> Կրկնել ստուգումը</button>}<span className="check-hint">Աշխատում է այստեղ՝ առանց արտաքին CAPTCHA ծառայության։</span>
+    <div className="verification"><SpamCheck version={version} onState={(state, payload) => {setCheckState(state); setProof(state === "verified" ? payload || "" : "");}}/>
+      {checkState === "loading" && <p className="check-hint" role="status">Ստուգումը բեռնվում է…</p>}{["error", "expired"].includes(checkState) && <button type="button" className="retry" onClick={() => setVersion(v => v+1)}><RotateCcw size={13}/> Կրկնել ստուգումը</button>}
     </div>{error && <p className="error" role="alert">{error}</p>}
-    <button className="primary" type="submit" disabled={sending || !message.trim() || checkState !== "verified"}>{sending ? "Ուղարկվում է…" : "Ուղարկել"}<ArrowRight size={18}/></button><p className="submit-note">Սա միակողմանի ուղարկում է․ պատասխան կամ զրույց չի լինի։</p>
+    <button className="primary" type="submit" disabled={sending || !message.trim() || checkState !== "verified"}>{sending ? "Ուղարկվում է…" : "Ուղարկել"}<ArrowRight size={18}/></button>
     <noscript><p className="error">Սպամի ստուգումն անցնելու և հաղորդագրություն ուղարկելու համար անհրաժեշտ է միացնել JavaScript-ը։</p></noscript>
   </form>;
 }

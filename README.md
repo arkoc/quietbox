@@ -2,7 +2,7 @@
 
 [Public source on GitHub](https://github.com/arkoc/quietbox) · [Հայերեն AI ստուգման հարցում / review guide](REVIEW.md)
 
-A small, open-source, one-way text-message box for an ordinary browser. Senders write a message, pass the spam check and send; the flow ends at a confirmation with no replies or conversation. Privacy details are on `/privacy`. Recipient access is through the separate `/inbox` URL. Senders do not create an account. The recipient signs in to a private inbox. Self-hosted ALTCHA proof-of-work, single-use proofs, a honeypot and shared quotas deter automated spam without IP-based tracking or a third-party CAPTCHA service.
+A small, open-source, one-way text-message box for an ordinary browser. Senders write a message, pass the spam check and send; the flow ends at a confirmation with no replies or conversation. The sender page contains only a message field, spam check and Send button; success is a short confirmation. Privacy details are on `/privacy`, and the GitHub link and AI review prompt are on `/source`. Recipient access is through the separate `/inbox` URL. Senders do not create an account. The recipient signs in to a private inbox. Self-hosted ALTCHA proof-of-work, single-use proofs, a honeypot and shared quotas deter automated spam without IP-based tracking or a third-party CAPTCHA service.
 
 ## Privacy promise
 

@@ -14,8 +14,8 @@ export default function AiReview() {
     }
   }
   return <section className="ai-review" id="ai-review" aria-labelledby="ai-review-heading">
-    <h2 id="ai-review-heading">Խնդրեք AI-ին ստուգել կոդը։</h2>
-    <p>Բացեք GitHub-ի պահոցը կամ պատճենեք այս հարցումը և ուղարկեք ձեր ընտրած AI-ին։ Այն կարող է օգնել հասկանալ՝ ինչ տվյալներ է մշակում հավելվածը և ինչ սահմաններ ունի անանունությունը։</p>
+    <h2 id="ai-review-heading">Ստուգել AI-ով</h2>
+    <p>Պատճենեք հարցումը և ուղարկեք ձեր ընտրած AI-ին։</p>
     <a className="text-link" href={SOURCE_REPOSITORY_URL} target="_blank" rel="noopener noreferrer">Դիտել կոդը GitHub-ում <ArrowUpRight size={15}/></a>
     <details className="review-prompt"><summary>Դիտել ստուգման հարցումը</summary><pre>{AI_REVIEW_PROMPT}</pre></details>
     <div className="review-copy"><button className="secondary" type="button" onClick={copyPrompt}>{status === "copied" ? <Check size={16}/> : <Copy size={16}/>} {status === "copied" ? "Հարցումը պատճենված է" : "Պատճենել հարցումը"}</button><span role="status">{status === "copied" ? "Տեղադրեք այն ձեր ընտրած AI-ի զրույցում։" : status === "failed" ? "Չհաջողվեց պատճենել։ Բացեք հարցումը և պատճենեք տեքստը։" : ""}</span></div>
