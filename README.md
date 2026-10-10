@@ -1,4 +1,4 @@
-# info
+# ինֆո
 
 [Public source on GitHub](https://github.com/arkoc/quietbox) · [Հայերեն AI ստուգման հարցում / review guide](REVIEW.md)
 

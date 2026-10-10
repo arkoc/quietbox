@@ -10,6 +10,7 @@ html[lang="hy"] body{font-family:Arial,"Noto Sans Armenian","DejaVu Sans",sans-s
 html[lang="hy"] h1,html[lang="hy"] h2{font-family:Georgia,"Noto Serif Armenian",Sylfaen,serif;letter-spacing:0;line-height:1.25}
 html[lang="hy"] h1{font-size:52px}html[lang="hy"] em{font-style:normal}
 html[lang="hy"] .eyebrow,html[lang="hy"] .card-label{letter-spacing:.5px}
+html[lang="hy"] .wordmark{letter-spacing:0}
 html[lang="hy"] .hero{grid-template-columns:1fr 1.23fr;gap:45px}
 html[lang="hy"] .privacy-heading h2{font-size:32px}
 html[lang="hy"] .card-top{flex-wrap:wrap;gap:8px}
