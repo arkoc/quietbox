@@ -26,23 +26,123 @@ html[lang="hy"] .reader-empty h2{font-size:27px}
 html[lang="hy"] .reader-top{flex-wrap:wrap}
 @media(max-width:1000px){html[lang="hy"] h1{font-size:44px}html[lang="hy"] .hero{gap:30px}}
 @media(max-width:740px){html[lang="hy"] .hero{grid-template-columns:1fr;gap:32px}html[lang="hy"] h1{font-size:44px}html[lang="hy"] .header{flex-wrap:wrap;gap:12px;padding:20px 0}html[lang="hy"] .header nav{gap:18px;font-size:11px}html[lang="hy"] .privacy-heading h2{font-size:29px}html[lang="hy"] .privacy-heading h2 br{display:block}html[lang="hy"] .privacy-heading h2 em{margin-left:0}html[lang="hy"] .inbox-title h1{font-size:34px}html[lang="hy"] .inbox-title{gap:15px;align-items:flex-start;flex-wrap:wrap}}
-/* The sender has one task: write and send. */
-.dropbox-page{max-width:620px;margin:38px auto 48px}
-.dropbox-page .form-card{padding:26px}
-html[lang="hy"] .dropbox-page .message-label{font-family:inherit;font-size:18px;font-weight:600;line-height:1.5;letter-spacing:0;margin:0}
-.anonymity-note{font-size:12px;line-height:1.8;color:var(--ink);margin-top:10px}
-.anonymity-note strong{display:block;font-size:13px;font-weight:600}
-.anonymity-note span{display:block;color:var(--muted);margin-top:4px}
-.anonymity-note a{text-decoration:underline;text-underline-offset:3px}
-.dropbox-page .textarea-wrap{margin-top:16px}
-.dropbox-page textarea{min-height:220px}
-.dropbox-page .verification{background:transparent;border:0;padding:0;margin:18px 0}
-.dropbox-page .success-card{min-height:260px;padding:32px}
-.dropbox-page .success-icon{width:56px;height:56px;margin-bottom:8px}
-html[lang="hy"] .dropbox-page .success-card h1{font-family:inherit;font-size:24px;font-weight:500;line-height:1.5;letter-spacing:0;margin:12px 0 0}
-.inbox-title{margin-bottom:24px}
-
-.privacy-page{padding:35px 0 55px}
-.privacy-page details p{font-size:13px;color:var(--muted)}
-.privacy-page .privacy-section{border-top:0;padding-top:20px}html[lang="hy"] .privacy-heading h1{font-size:32px;margin:16px 0}
-@media(max-width:740px){.dropbox-page{margin:26px auto 35px}.dropbox-page .form-card{padding:20px}.dropbox-page textarea{min-height:200px}.dropbox-page .success-card{padding:25px;min-height:240px}}
+/* Public pages: restrained typography and a single, clear submission form. */
+@font-face {
+  font-family:"Info Armenian";
+  src:url("/fonts/NotoSansArmenian.ttf") format("truetype");
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
+}
+:root { --paper:#f7f8f4; --ink:#233c32; --muted:#5f6b64; --line:#dfe5df; }
+html[lang="hy"] body {
+  font-family:"Info Armenian",Arial,sans-serif;
+  font-size:14px;
+  font-synthesis:none;
+  line-height:1.75;
+}
+html[lang="hy"] h1,html[lang="hy"] h2 { font-family:inherit; }
+.site { max-width:1120px; padding:0 40px; }
+.header { min-height:100px; border-bottom:1px solid var(--line); }
+.wordmark { gap:11px; font-size:25px; font-weight:650; }
+.logo {
+  width:39px; height:39px; border:1px solid #294a3c; border-radius:12px;
+  color:#fff; background:#294a3c; box-shadow:0 2px 3px #1734260a;
+}
+.header nav { gap:25px; font-size:12px; color:var(--muted); }
+.header nav a { min-height:44px; gap:5px; transition:color .15s; }
+.header nav a:hover { color:var(--ink); }
+button:focus-visible,a:focus-visible,summary:focus-visible,select:focus-visible {
+  outline:2px solid #52765f; outline-offset:4px;
+}
+.dropbox-page { max-width:656px; margin:62px auto 72px; }
+.dropbox-page .form-card {
+  padding:34px; border:1px solid #dce3dc; border-radius:18px;
+  background:#fff; box-shadow:0 4px 8px #243c3203,0 20px 50px -26px #243c3230;
+}
+.form-heading { display:flex; gap:14px; align-items:center; }
+.form-heading-icon {
+  display:grid; place-items:center; flex-shrink:0;
+  width:40px; height:40px; color:#3e6652; border-radius:11px; background:#edf2eb;
+}
+html[lang="hy"] .dropbox-page .message-label {
+  font-family:inherit; font-size:22px; font-weight:650; line-height:1.5;
+  letter-spacing:-.35px; margin:0; overflow-wrap:anywhere;
+}
+.anonymity-note { display:flex; gap:10px; margin-top:24px; color:var(--ink); }
+.anonymity-note>svg { margin-top:4px; flex-shrink:0; color:#55725e; }
+.anonymity-note strong { display:block; font-size:13px; font-weight:550; line-height:1.85; }
+.anonymity-note span { display:block; margin-top:6px; font-size:12px; line-height:1.85; color:var(--muted); }
+.anonymity-note a { text-decoration:underline; text-decoration-color:#98aa9d; text-underline-offset:3px; white-space:nowrap; }
+.anonymity-note a:hover { color:var(--ink); }
+.dropbox-page .textarea-wrap {
+  margin-top:25px; background:#fafbf8; border:1px solid #cdd7ce; border-radius:11px;
+  box-shadow:inset 0 1px 3px #243c3203;
+}
+.dropbox-page .textarea-wrap:focus-within { border-color:#557b63; box-shadow:0 0 0 3px #e8efe8; }
+.dropbox-page textarea { min-height:234px; padding:18px 18px 40px; font-size:15px; line-height:1.85; }
+.dropbox-page textarea::placeholder { color:#758178; }
+.counter { bottom:12px; right:16px; font-size:10px; color:#6f7b72; }
+.form-actions { display:flex; align-items:center; justify-content:space-between; gap:22px; margin-top:22px; }
+.dropbox-page .verification { flex:1; min-width:0; background:transparent; border:0; padding:0; margin:0; }
+.spam-widget { min-height:44px; --altcha-color-base-content:#3a4e41; }
+.spam-widget altcha-widget { --altcha-font-size:13px; }
+html[lang="hy"] .check-hint { font-size:11px; color:var(--muted); }
+.dropbox-page .primary {
+  flex-shrink:0; width:auto; min-width:156px; min-height:48px;
+  padding:12px 18px; gap:16px; border-radius:9px; font-size:13px; font-weight:600;
+  background:#2b503c; transition:background .15s,box-shadow .15s;
+}
+.dropbox-page .primary:hover:not(:disabled) { background:#203f2f; box-shadow:0 3px 8px #243c3218; }
+.dropbox-page .primary:disabled { background:#e4ebe1; color:#63745f; }
+.dropbox-page .error { margin:14px 0 0; }
+.dropbox-page .success-card { min-height:310px; padding:38px; }
+.dropbox-page .success-icon { width:60px; height:60px; margin-bottom:12px; }
+html[lang="hy"] .dropbox-page .success-card h1 { font-size:24px; font-weight:600; margin:12px 0 0; }
+.inbox-title { margin-bottom:24px; }
+.privacy-page { max-width:736px; margin:50px auto 70px; padding:0; }
+.privacy-page .privacy-section { display:block; border:0; padding:0 0 28px; }
+.privacy-heading { display:flex; align-items:center; gap:14px; margin-bottom:28px; }
+html[lang="hy"] .privacy-heading h1 { font-size:28px; font-weight:650; line-height:1.5; margin:0; }
+.privacy-answers { border:1px solid var(--line); border-radius:15px; background:#fff; overflow:hidden; }
+.privacy-answers details { padding:20px 24px; }
+.privacy-answers details:last-child { border-bottom:0; }
+.privacy-answers summary { min-height:27px; font-size:13px; line-height:1.8; font-weight:600; }
+.privacy-answers summary svg { color:#627669; }
+.privacy-page details p { font-size:13px; color:var(--muted); padding:12px 25px 0 0; line-height:1.95; }
+.privacy-page .text-link { font-size:12px; border:0; min-height:44px; padding:0; }
+@media(max-width:740px) {
+  .site { padding:0 24px; }
+  html[lang="hy"] .header { min-height:88px; flex-wrap:nowrap; padding:12px 0; gap:18px; }
+  html[lang="hy"] .header nav { gap:18px; font-size:11px; }
+  .wordmark { font-size:23px; }
+  .logo { width:36px; height:36px; border-radius:11px; }
+  .dropbox-page { margin:32px auto 44px; }
+  .dropbox-page .form-card { padding:26px; border-radius:16px; }
+  html[lang="hy"] .dropbox-page .message-label { font-size:20px; }
+  .form-heading { gap:12px; }
+  .form-heading-icon { width:36px; height:36px; border-radius:10px; }
+  .anonymity-note { margin-top:22px; }
+  .dropbox-page textarea { min-height:222px; }
+  .privacy-page { margin:34px auto 45px; }
+  html[lang="hy"] .privacy-heading h1 { font-size:25px; }
+  .privacy-answers details { padding:18px 20px; }
+}
+@media(max-width:430px) {
+  .site { padding:0 16px; }
+  html[lang="hy"] .header { gap:12px; min-height:80px; }
+  html[lang="hy"] .header nav { gap:12px; font-size:11px; }
+  .wordmark { font-size:22px; gap:8px; }
+  .logo { width:32px; height:32px; border-radius:10px; }
+  .dropbox-page { margin:24px auto 36px; }
+  .dropbox-page .form-card { padding:22px 20px; }
+  html[lang="hy"] .dropbox-page .message-label { font-size:19px; }
+  .form-heading { align-items:flex-start; gap:10px; }
+  .form-heading-icon { width:34px; height:34px; }
+  .anonymity-note { margin-top:20px; gap:8px; }
+  .dropbox-page .textarea-wrap { margin-top:22px; }
+  .dropbox-page textarea { min-height:210px; padding:16px 16px 38px; font-size:16px; }
+  .form-actions { flex-direction:column; align-items:stretch; gap:14px; margin-top:18px; }
+  .dropbox-page .primary { width:100%; justify-content:center; gap:12px; }
+  .privacy-page details p { padding-right:0; }
+}

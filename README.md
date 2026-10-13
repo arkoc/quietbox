@@ -67,4 +67,6 @@ Application source, dependency lockfile, migrations and tests are published on G
 - `app/api/inbox/route.ts`, `lib/recipient.ts`: recipient authorization and inbox actions.
 - `db/schema.ts`, `drizzle/`: exact storage schema.
 
-MIT licensed. ALTCHA and framework dependencies retain their own licenses.
+The Armenian typeface is Noto Sans Armenian, served locally from `public/fonts/` with its SIL Open Font License. It was obtained from the [Google Fonts repository](https://github.com/google/fonts/tree/main/ofl/notosansarmenian); visitors make no requests to a third-party font service. Icons are bundled Lucide SVGs.
+
+MIT licensed. ALTCHA, the font and framework dependencies retain their own licenses.

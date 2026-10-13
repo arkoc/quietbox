@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { ArrowRight, Check, RotateCcw } from "lucide-react";
+import { Check, RotateCcw, Send, Shield, SquarePen } from "lucide-react";
 function SpamCheck({ version, onState }: {version: number; onState: (state: string, payload?: string) => void}) {
   const host = useRef<HTMLDivElement>(null), callback = useRef(onState);
   callback.current = onState;
@@ -47,14 +47,15 @@ export default function MessageForm() {
   }
   if (sent) return <div className="form-card success-card"><div className="success-icon" aria-hidden="true"><Check size={28}/></div><h1 ref={resultHeading} tabIndex={-1}>Ուղարկված է։</h1></div>;
   return <form className="form-card" onSubmit={submit} autoComplete="off">
-    <h1 className="message-label"><label htmlFor="message">Անանուն հաղորդագրություն</label></h1>
-    <p className="anonymity-note" id="anonymity-note"><strong>Այս հավելվածը չի պահում ձեր IP հասցեն կամ հաշվի տվյալները։</strong><span>Հոսթինգը տեսնում է ձեր IP հասցեն։ Մի՛ ներառեք ձեզ բացահայտող տվյալներ։ <a href="/privacy">Մանրամասներ</a></span></p>
+    <div className="form-heading"><span className="form-heading-icon" aria-hidden="true"><SquarePen size={21} strokeWidth={1.7}/></span><h1 className="message-label"><label htmlFor="message">Անանուն հաղորդագրություն</label></h1></div>
+    <div className="anonymity-note" id="anonymity-note"><Shield size={17} strokeWidth={1.7} aria-hidden="true"/><p><strong>Այս հավելվածը չի պահում ձեր IP հասցեն կամ հաշվի տվյալները։</strong><span>Հոսթինգը տեսնում է ձեր IP հասցեն։ Մի՛ ներառեք ձեզ բացահայտող տվյալներ։ <a href="/privacy">Մանրամասներ</a></span></p></div>
     <div className="textarea-wrap"><textarea id="message" name="message" aria-describedby="anonymity-note message-count" placeholder="Գրեք այստեղ…" maxLength={8000} value={message} onChange={e => setMessage(e.target.value)} required disabled={sending} spellCheck={false}/><span id="message-count" className="counter">{message.length.toLocaleString("hy-AM")} / 8 000</span></div>
     <div className="honeypot" aria-hidden="true"><label>Այս դաշտը թողեք դատարկ<input name="website" type="text" tabIndex={-1} autoComplete="off"/></label></div>
-    <div className="verification"><SpamCheck version={version} onState={(state, payload) => {setCheckState(state); setProof(state === "verified" ? payload || "" : "");}}/>
+    {error && <p className="error" role="alert">{error}</p>}
+    <div className="form-actions"><div className="verification"><SpamCheck version={version} onState={(state, payload) => {setCheckState(state); setProof(state === "verified" ? payload || "" : "");}}/>
       {checkState === "loading" && <p className="check-hint" role="status">Ստուգումը բեռնվում է…</p>}{["error", "expired"].includes(checkState) && <button type="button" className="retry" onClick={() => setVersion(v => v+1)}><RotateCcw size={13}/> Կրկնել ստուգումը</button>}
-    </div>{error && <p className="error" role="alert">{error}</p>}
-    <button className="primary" type="submit" disabled={sending || !message.trim() || checkState !== "verified"}>{sending ? "Ուղարկվում է…" : "Ուղարկել"}<ArrowRight size={18}/></button>
+    </div>
+    <button className="primary" type="submit" disabled={sending || !message.trim() || checkState !== "verified"}>{sending ? "Ուղարկվում է…" : "Ուղարկել"}<Send size={17} strokeWidth={1.7} aria-hidden="true"/></button></div>
     <noscript><p className="error">Սպամի ստուգումն անցնելու և հաղորդագրություն ուղարկելու համար անհրաժեշտ է միացնել JavaScript-ը։</p></noscript>
   </form>;
 }

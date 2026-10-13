@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hy">
+      <head><link rel="preload" href="/fonts/NotoSansArmenian.ttf" as="font" type="font/ttf" crossOrigin="anonymous"/></head>
       <body className="antialiased">{children}</body>
     </html>
   );
