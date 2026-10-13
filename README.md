@@ -2,7 +2,7 @@
 
 [Public source on GitHub](https://github.com/arkoc/quietbox) · [Հայերեն AI ստուգման հարցում / review guide](REVIEW.md)
 
-A small, open-source, one-way text-message box for an ordinary browser. Senders write a message, pass the spam check and send; the flow ends at a confirmation with no replies or conversation. The sender page has an anonymous-message heading, a short notice distinguishing application storage from hosting metadata, a message field, spam check and Send button; success is a short confirmation. Privacy details are on `/privacy`, and the GitHub link and AI review prompt are on `/source`. Recipient access is through the separate `/inbox` URL. Senders do not create an account. The recipient signs in to a private inbox. Self-hosted ALTCHA proof-of-work, single-use proofs, a honeypot and shared quotas deter automated spam without IP-based tracking or a third-party CAPTCHA service.
+A small, open-source, one-way text-message box for an ordinary browser. Senders write a message, pass the spam check and send; the flow ends at a confirmation with no replies or conversation. The sender page has an anonymous-message heading, a short notice distinguishing application storage from hosting metadata, a message field, spam check and Send button; success is a short confirmation. Privacy details are on `/privacy`. The “Բաց կոդ” link opens the GitHub repository directly; the AI review prompt is in `REVIEW.md`. Older `/source` links redirect to GitHub. Recipient access is through the separate `/inbox` URL. Senders do not create an account. The recipient signs in to a private inbox. Self-hosted ALTCHA proof-of-work, single-use proofs, a honeypot and shared quotas deter automated spam without IP-based tracking or a third-party CAPTCHA service.
 
 ## Privacy promise
 
@@ -52,13 +52,12 @@ Give an AI the [repository link](https://github.com/arkoc/quietbox) and the read
 ```sh
 npm test
 npx tsc --noEmit
-npm run source:bundle
 npm run build
 ```
 
 Tests exercise header removal, bounded input, real ALTCHA proof verification, tampered/expired proof rejection, atomic replay protection, shared quotas, stored fields and retention against the actual migration. Also verify the deployed gateway rejects unauthenticated inbox requests and spoofed identity headers.
 
-`/source` displays the application's source and per-file SHA-256 hashes. `/quietbox-source.tar.gz` includes the complete allowlisted source, dependency lockfile and tests. Run `npm run source:bundle` after source edits and before building. The bundle excludes runtime data and secrets. Hashes are aids to comparing files, not independent deployment attestation.
+Application source, dependency lockfile, migrations and tests are published on GitHub. Keep the public repository updated with deployed changes, excluding runtime data and secrets. The site links directly to GitHub and does not host a source explorer or source download. Published source is not independent deployment attestation.
 
 ## Main files
 

@@ -1,6 +1,5 @@
-import { Header } from "../components/shell";
-import SourceViewer from "./source-viewer";
-import AiReview from "./ai-review";
+import { permanentRedirect } from "next/navigation";
+import { SOURCE_REPOSITORY_URL } from "../../lib/source-info";
 export default function SourcePage() {
-  return <div className="site"><Header/><main className="source-page"><h1>Բաց կոդ</h1><AiReview/><SourceViewer/></main></div>;
+  permanentRedirect(SOURCE_REPOSITORY_URL);
 }

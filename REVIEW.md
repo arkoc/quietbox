@@ -47,4 +47,4 @@ Use `npm test` and `npx tsc --noEmit` for the supplied checks. Review live brows
 
 The GitHub repository contains an allowlisted snapshot of the application source, lockfile, migrations, tests and MIT license. It has its own public history; internal deployment history, local files, secrets, inbox records and generated build output are excluded. `.env.example` contains placeholders only; `.openai/hosting.json` contains the public deployment identifier, not a credential.
 
-The Site's `/source` page also offers a source download and SHA-256 file hashes. These enable file comparisons, not independent deployment attestation. The repository and downloadable source must be updated together when application code changes.
+The Site links directly to the GitHub repository. Older `/source` links redirect there. Keep the public repository updated when application code changes; published source is not independent deployment attestation.
