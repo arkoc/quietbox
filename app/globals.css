@@ -31,6 +31,7 @@ html[lang="hy"] .reader-top{flex-wrap:wrap}
 .dropbox-page .form-card{padding:26px}
 html[lang="hy"] .dropbox-page .message-label{font-family:inherit;font-size:18px;font-weight:600;line-height:1.5;letter-spacing:0;margin:0}
 .anonymity-note{font-size:12px;line-height:1.8;color:var(--ink);margin-top:10px}
+.anonymity-note strong{display:block;font-size:13px;font-weight:600}
 .anonymity-note span{display:block;color:var(--muted);margin-top:4px}
 .anonymity-note a{text-decoration:underline;text-underline-offset:3px}
 .dropbox-page .textarea-wrap{margin-top:16px}
@@ -53,5 +54,6 @@ html[lang="hy"] .source-page h1{font-size:32px;margin:0 0 28px}
 .ai-review .review-limit{font-size:11px;margin:18px 0 0}
 @media(max-width:740px){.ai-review{padding:20px}.ai-review h2{font-size:21px}}
 .privacy-page{padding:35px 0 55px}
+.privacy-page details p{font-size:13px;color:var(--muted)}
 .privacy-page .privacy-section{border-top:0;padding-top:20px}html[lang="hy"] .privacy-heading h1{font-size:32px;margin:16px 0}
 @media(max-width:740px){.dropbox-page{margin:26px auto 35px}.dropbox-page .form-card{padding:20px}.dropbox-page textarea{min-height:200px}.dropbox-page .success-card{padding:25px;min-height:240px}}

@@ -48,7 +48,7 @@ export default function MessageForm() {
   if (sent) return <div className="form-card success-card"><div className="success-icon" aria-hidden="true"><Check size={28}/></div><h1 ref={resultHeading} tabIndex={-1}>Ուղարկված է։</h1></div>;
   return <form className="form-card" onSubmit={submit} autoComplete="off">
     <h1 className="message-label"><label htmlFor="message">Անանուն հաղորդագրություն</label></h1>
-    <p className="anonymity-note" id="anonymity-note">Հաղորդագրության հետ հավելվածը չի պահում ձեր IP հասցեն կամ հաշվի տվյալները։ <span>Հոսթինգը կարող է մշակել կապի տվյալները։ <a href="/privacy">Մանրամասներ</a></span></p>
+    <p className="anonymity-note" id="anonymity-note"><strong>Այս հավելվածը չի պահում ձեր IP հասցեն կամ հաշվի տվյալները։</strong><span>Հոսթինգը տեսնում է ձեր IP հասցեն։ Մի՛ ներառեք ձեզ բացահայտող տվյալներ։ <a href="/privacy">Մանրամասներ</a></span></p>
     <div className="textarea-wrap"><textarea id="message" name="message" aria-describedby="anonymity-note message-count" placeholder="Գրեք այստեղ…" maxLength={8000} value={message} onChange={e => setMessage(e.target.value)} required disabled={sending} spellCheck={false}/><span id="message-count" className="counter">{message.length.toLocaleString("hy-AM")} / 8 000</span></div>
     <div className="honeypot" aria-hidden="true"><label>Այս դաշտը թողեք դատարկ<input name="website" type="text" tabIndex={-1} autoComplete="off"/></label></div>
     <div className="verification"><SpamCheck version={version} onState={(state, payload) => {setCheckState(state); setProof(state === "verified" ? payload || "" : "");}}/>
